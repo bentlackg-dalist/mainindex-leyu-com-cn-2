@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://bentlackg-dalist.github.io/mainindex-leyu-com-cn-2/sitemap.xml
