@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>taptap点点 · 信息索引手记</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f0f2f5;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            color: #1e2a3a;
+            line-height: 1.7;
+            padding: 0 16px;
+        }
+
+        .page {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 40px 0 56px;
+        }
+
+        /* hero 横幅 */
+        .hero {
+            background: linear-gradient(145deg, #dbe4ec 0%, #c9d4e0 100%);
+            border-radius: 28px;
+            padding: 48px 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.04);
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+        }
+
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            color: #1f2b38;
+            margin-bottom: 8px;
+        }
+
+        .hero .sub {
+            font-size: 1rem;
+            color: #3b4b5b;
+            background: rgba(255, 255, 255, 0.35);
+            display: inline-block;
+            padding: 4px 18px;
+            border-radius: 40px;
+            backdrop-filter: blur(2px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            margin-top: 6px;
+        }
+
+        .hero p {
+            margin-top: 20px;
+            font-size: 1.05rem;
+            color: #2a3a4c;
+            max-width: 640px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* 卡片通用设计 */
+        .card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 32px 36px;
+            margin-bottom: 28px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+            border: 1px solid #e4e9f0;
+            transition: box-shadow 0.15s;
+        }
+
+        .card:hover {
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+        }
+
+        .card h2 {
+            font-size: 1.6rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #eef2f7;
+            color: #1d2c3d;
+        }
+
+        .card h3 {
+            font-size: 1.15rem;
+            font-weight: 500;
+            margin: 20px 0 8px 0;
+            color: #2a4055;
+        }
+
+        .card p {
+            margin-bottom: 14px;
+        }
+
+        .card ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 14px 0;
+        }
+
+        .card ul li {
+            padding: 6px 0 6px 28px;
+            position: relative;
+        }
+
+        .card ul li::before {
+            content: "▹";
+            position: absolute;
+            left: 6px;
+            color: #6c7e94;
+            font-size: 1.1rem;
+        }
+
+        /* 背景说明卡片使用更浅底色 */
+        .bg-card {
+            background: #f7f9fc;
+            border-left: 4px solid #b0c4d9;
+        }
+
+        .bg-card p {
+            color: #2d3e53;
+        }
+
+        /* 特色场景双栏 */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin: 20px 0 8px;
+        }
+
+        .feature-item {
+            background: #f6f8fb;
+            padding: 20px 22px;
+            border-radius: 18px;
+            border: 1px solid #e5eaf2;
+        }
+
+        .feature-item strong {
+            display: block;
+            font-weight: 550;
+            margin-bottom: 4px;
+            color: #1c2d40;
+        }
+
+        .feature-item p {
+            margin-bottom: 0;
+            font-size: 0.95rem;
+            color: #344b60;
+        }
+
+        /* FAQ摘要 */
+        .faq-summary {
+            margin: 20px 0 6px;
+        }
+
+        .faq-item {
+            padding: 12px 0;
+            border-bottom: 1px dashed #dee5ed;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-q {
+            font-weight: 500;
+            color: #1f3449;
+            margin-bottom: 2px;
+        }
+
+        .faq-a {
+            color: #3f5770;
+            font-size: 0.95rem;
+        }
+
+        /* 页尾提示 */
+        .footer-note {
+            margin-top: 36px;
+            padding: 24px 0;
+            text-align: center;
+            border-top: 1px solid #d7dfe9;
+            color: #4b637b;
+            font-size: 0.95rem;
+        }
+
+        .footer-note a {
+            color: #1f2e44;
+            text-decoration: none;
+            font-weight: 450;
+            border-bottom: 1px dotted #8fa5b8;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .footer-note a:hover {
+            color: #101b29;
+            border-bottom: 1px solid #1f2e44;
+        }
+
+        /* 响应式 */
+        @media (max-width: 700px) {
+            .hero {
+                padding: 36px 20px;
+            }
+            .hero h1 {
+                font-size: 1.9rem;
+            }
+            .card {
+                padding: 24px 20px;
+            }
+            .feature-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+            .hero .sub {
+                font-size: 0.9rem;
+            }
+            .card h2 {
+                font-size: 1.3rem;
+            }
+            body {
+                padding: 0 12px;
+            }
+            .page {
+                padding-top: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- hero 横幅 -->
+    <div class="hero">
+        <h1>taptap点点 · 索引笔记</h1>
+        <span class="sub">从资料整理到信息聚合</span>
+        <p>一份围绕移动内容浏览、轻量发现与日常信息索引的整理说明。<br>以实用和克制的视角，梳理站点背后的使用思路。</p>
+    </div>
+
+    <!-- 背景说明卡片 -->
+    <div class="card bg-card">
+        <h2>站点背景与定位</h2>
+        <p><strong>taptap点点</strong> 并非一个内容生产平台，而偏向于信息索引和轻浏览。其页面结构以链接聚合与分类展示为主，适合需要快速浏览和多条目比对的场景。从资料整理的角度看，它更像一本不断更新的目录册——不深究单个条目的细节，而是提供横向的视野。</p>
+        <p>在信息过载的当下，这种索引式的呈现方式，减少了筛选成本，也保留了用户自主探索的空间。站内内容涵盖多个领域，但始终遵循“展示为主，引导为辅”的逻辑。</p>
+    </div>
+
+    <!-- 三段自然介绍（此处呈现为两个卡片，但包含三层内容） -->
+    <div class="card">
+        <h2>信息组织与分类逻辑</h2>
+        <p>站点采用扁平化的分类结构，每个主要栏目对应一类内容主题。用户不需要层层点击，即可在首页附近找到大部分入口。这种设计降低了认知负荷，也让索引本身成为一种浏览方式。</p>
+        <p>从2019年至今的多次调整中，<strong>taptap点点</strong> 逐渐收敛了信息密度，不再追求条目数量，而是更关注分类的清晰度和更新频率的稳定性。对长期使用者而言，这种克制反而提升了站内信息的可回溯性。</p>
+
+        <h3>适用场景举例</h3>
+        <div class="feature-grid">
+            <div class="feature-item">
+                <strong>日常信息扫读</strong>
+                <p>每天花几分钟快速浏览分类标题，标记感兴趣的项目，后续再细读。</p>
+            </div>
+            <div class="feature-item">
+                <strong>资料对比与归档</strong>
+                <p>利用多条目并列的展示方式，快速比对各选项差异，适合做初步筛选。</p>
+            </div>
+            <div class="feature-item">
+                <strong>主题式发现</strong>
+                <p>按兴趣领域查阅，不依赖搜索，通过索引自然发现新的内容线索。</p>
+            </div>
+            <div class="feature-item">
+                <strong>轻量收藏参考</strong>
+                <p>将站点作为个人书签夹的延伸，通过链接聚合替代本地收藏夹的维护。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 第三段：FAQ摘要式介绍 + 信息索引视角 -->
+    <div class="card">
+        <h2>常见疑问与索引视角</h2>
+        <p>以下摘录了部分使用者常提及的问题，以及从资料整理角度做的回应：</p>
+        <div class="faq-summary">
+            <div class="faq-item">
+                <div class="faq-q">Q：站点的内容更新频率如何？</div>
+                <div class="faq-a">A：通常保持每周有新增或调整，但不会固定日期。更新以分类补充和链接替换为主，重大变化会体现在首页分类结构中。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">Q：是否支持搜索或筛选？</div>
+                <div class="faq-a">A：目前以静态索引为主，未提供站内搜索。但分类标识和标题已经过精简，用户可通过浏览栏目标题快速定位感兴趣的区域。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">Q：移动端浏览体验如何？</div>
+                <div class="faq-a">A：页面针对触屏操作做了基础适配，卡片间距和链接点击区域均优化至舒适范围。推荐在手机浏览器或应用内直接打开。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">Q：我如何将感兴趣的条目保存下来？</div>
+                <div class="faq-a">A：你可以直接复制链接，或使用浏览器书签功能。部分用户会选择截图归档，搭配笔记应用使用。</div>
+            </div>
+        </div>
+        <p style="margin-top: 20px; font-size: 0.95rem; color: #3f5770;">以上是基于长期观察和使用经验的整理，实际体验可能因个人习惯有所不同。信息索引的价值在于“知道去哪里找”，而非“提供所有答案”。</p>
+    </div>
+
+    <!-- 页尾访问提示 -->
+    <div class="footer-note">
+        <p>若你希望了解站点当前的最新分类与内容陈列，可以直接前往 <a href="https://m-taptap.com">taptap点点</a> 浏览索引首页。</p>
+        <p style="margin-top: 6px; color: #6b809a;">本页为介绍性整理，不构成官方说明，内容仅供参考。</p>
+    </div>
+
+</div>
+</body>
+</html>
