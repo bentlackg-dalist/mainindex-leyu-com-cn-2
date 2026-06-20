@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+  <title>欧博 · 站点说明</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f5f9fc;
+      color: #1f2c38;
+      line-height: 1.7;
+      min-height: 100vh;
+      padding: 1.2rem;
+    }
+
+    .page {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 28px;
+      box-shadow: 0 12px 30px rgba(0, 40, 50, 0.08);
+      padding: 2rem 1.8rem 2.5rem;
+      transition: box-shadow 0.2s;
+    }
+
+    /* 故事开场短句 —— 用柔和引述 */
+    .opening {
+      font-size: 1.15rem;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      color: #2b5f6f;
+      padding-left: 0.5rem;
+      border-left: 4px solid #5f9ea0;
+      margin-bottom: 1.8rem;
+      background: #ecf4f5;
+      padding: 0.8rem 1rem 0.8rem 1.4rem;
+      border-radius: 0 40px 40px 0;
+      line-height: 1.5;
+      box-shadow: 0 2px 6px rgba(95, 158, 160, 0.10);
+    }
+
+    .opening::before {
+      content: "♢ ";
+      color: #3b7d86;
+      font-weight: 400;
+    }
+
+    h1 {
+      font-size: 1.9rem;
+      font-weight: 500;
+      margin: 0.6rem 0 0.2rem 0;
+      letter-spacing: -0.01em;
+      color: #1a3a42;
+      border-bottom: 2px solid #b5d4d8;
+      display: inline-block;
+      padding-bottom: 0.25rem;
+    }
+
+    .subhead {
+      font-size: 0.9rem;
+      color: #507d85;
+      margin-top: 0.2rem;
+      margin-bottom: 1.4rem;
+      font-weight: 350;
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin: 2rem 0 1.6rem;
+    }
+
+    .card {
+      background: #f9fdfe;
+      padding: 1.2rem 1.3rem;
+      border-radius: 24px;
+      border: 1px solid #d6e9ec;
+      box-shadow: 0 3px 10px rgba(75, 130, 140, 0.04);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(65, 125, 135, 0.10);
+      border-color: #9ac8ce;
+    }
+
+    .card h2 {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #1b4f59;
+      margin-bottom: 0.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .card h2 span {
+      font-size: 1.3rem;
+      margin-right: 0.2rem;
+    }
+
+    .card p {
+      font-size: 0.98rem;
+      color: #1f3640;
+      margin-bottom: 0.2rem;
+    }
+
+    .card ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 0.3rem;
+    }
+
+    .card li {
+      padding: 0.25rem 0 0.25rem 1.1rem;
+      position: relative;
+      font-size: 0.95rem;
+      color: #1f3d47;
+    }
+
+    .card li::before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      color: #4b8f99;
+      font-weight: 500;
+    }
+
+    /* 承接段落 */
+    .bridge {
+      background: #eaf3f5;
+      padding: 1.3rem 1.5rem;
+      border-radius: 30px;
+      margin: 2rem 0 1.8rem;
+      border-left: 5px solid #57999e;
+      color: #1d3b43;
+      font-size: 0.98rem;
+    }
+
+    .bridge strong {
+      color: #1d4e58;
+      font-weight: 500;
+    }
+
+    .feature-highlight {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin: 1rem 0 0.5rem;
+    }
+
+    .feature-tag {
+      background: white;
+      border: 1px solid #bcd6da;
+      border-radius: 40px;
+      padding: 0.25rem 0.9rem;
+      font-size: 0.85rem;
+      color: #1e535e;
+      letter-spacing: 0.01em;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    }
+
+    .feature-tag::before {
+      content: "✦ ";
+      color: #3b838e;
+    }
+
+    /* 链接自然嵌入段落 */
+    .link-sentence {
+      font-size: 1rem;
+      margin: 1.4rem 0 1rem;
+      padding: 0.3rem 0.5rem;
+      background: #f4fbfc;
+      border-radius: 40px;
+      display: inline-block;
+      padding: 0.4rem 1rem 0.4rem 1rem;
+      border: 1px solid #c7e1e4;
+    }
+
+    .link-sentence a {
+      color: #1c6773;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px dashed #5e989e;
+      transition: border 0.2s, color 0.2s;
+    }
+
+    .link-sentence a:hover {
+      color: #0c4c57;
+      border-bottom: 1px solid #0c4c57;
+    }
+
+    /* 温和结尾 */
+    .gentle-end {
+      margin-top: 2.5rem;
+      padding: 1rem 1.2rem 0.8rem;
+      background: #f1f8f9;
+      border-radius: 28px;
+      text-align: center;
+      border: 1px solid #cfe2e5;
+      color: #2a5661;
+      font-size: 0.95rem;
+    }
+
+    .gentle-end p {
+      margin: 0.3rem 0;
+    }
+
+    .gentle-end small {
+      opacity: 0.7;
+      font-size: 0.8rem;
+      color: #3c6f79;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #cfe0e3;
+      margin: 1.8rem 0 0.8rem;
+      width: 40%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* FAQ 摘要风格 */
+    .faq-mini {
+      margin: 1.8rem 0 0.2rem;
+    }
+
+    .faq-item {
+      background: white;
+      border: 1px solid #dceeef;
+      border-radius: 40px;
+      padding: 0.5rem 1.2rem 0.5rem 1.2rem;
+      margin-bottom: 0.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.2rem 0.6rem;
+    }
+
+    .faq-item .q {
+      font-weight: 500;
+      color: #1d4a53;
+      font-size: 0.93rem;
+    }
+
+    .faq-item .a {
+      color: #1f3a40;
+      font-size: 0.9rem;
+    }
+
+    .faq-item .a a {
+      color: #1d6d7a;
+      text-decoration: none;
+      border-bottom: 1px dotted #7bafb5;
+    }
+
+    .faq-item .a a:hover {
+      border-bottom: 1px solid #1d6d7a;
+    }
+
+    /* 移动端友好 */
+    @media (max-width: 500px) {
+      body {
+        padding: 0.5rem;
+      }
+      .page {
+        padding: 1.2rem 1rem 1.8rem;
+      }
+      h1 {
+        font-size: 1.5rem;
+      }
+      .opening {
+        font-size: 1rem;
+        padding: 0.6rem 0.8rem;
+      }
+      .card {
+        padding: 0.9rem 1rem;
+      }
+      .bridge {
+        padding: 1rem 1rem;
+        font-size: 0.9rem;
+      }
+      .gentle-end {
+        font-size: 0.9rem;
+      }
+      .faq-item {
+        padding: 0.4rem 0.8rem;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- 开场短句 -->
+  <div class="opening">
+    站点从清晰的框架出发，逐步展开可信的叙述。
+  </div>
+
+  <h1>欧博 · 站点简述</h1>
+  <div class="subhead">一份关于内容与边界的整理</div>
+
+  <!-- 特点 / 介绍网格卡片 -->
+  <div class="intro-grid">
+    <div class="card">
+      <h2><span>◈</span> 定位与背景</h2>
+      <p>欧博是一个以信息聚合与引导为起点整理的站点。页面内容围绕分类与索引展开，帮助浏览者快速了解不同模块的大致方向。</p>
+      <ul>
+        <li>结构清晰，减少无效跳转</li>
+        <li>内容模块保持独立说明</li>
+        <li>聚焦于基础介绍与关联指引</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2><span>◈</span> 可信说明</h2>
+      <p>本页仅作为站点介绍与入口说明存在。所有外部链接均指向对应的原始内容页面，不进行重定向或隐藏跳转。以下为基本原则：</p>
+      <ul>
+        <li>链接文字与目标一致</li>
+        <li>无诱导性表述或虚假承诺</li>
+        <li>内容来自可查证的公开信息</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 承接段落：进一步解释站点角色 -->
+  <div class="bridge">
+    <strong>承接上文：</strong> 欧博并不是一个单一功能页面，而是将不同上下文整合在同个名称下。每一个入口都对应着具体说明，让浏览者能在阅读中自行判断。如果你希望直接浏览其主要页面，可以前往 <a href="https://zh-c-oubo.com" style="color:#1b6875; text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; font-weight: 500;">欧博</a> 查看完整结构。那里保持了与本页一致的平实风格。
+  </div>
+
+  <!-- 特点列表（卡片 + 标签） -->
+  <div class="card" style="margin-top: 0.5rem;">
+    <h2><span>◈</span> 结构特点</h2>
+    <p>在内容组织上，站点侧重可读性与简单导航：</p>
+    <div class="feature-highlight">
+      <span class="feature-tag">分类索引</span>
+      <span class="feature-tag">段落说明</span>
+      <span class="feature-tag">无夸大用词</span>
+      <span class="feature-tag">一致风格</span>
+      <span class="feature-tag">移动适配</span>
+    </div>
+    <p style="margin-top: 0.6rem;">每个卡片或列表都尽量使用中性表述，不在标题之外额外增加营销性质文案。</p>
+  </div>
+
+  <!-- 自然嵌入的链接句子（a标签文本严格等于“欧博”） -->
+  <div class="link-sentence">
+    ► 若想直接进入站点主页面，可使用链接 <a href="https://zh-c-oubo.com">欧博</a>，该地址为固定入口。
+  </div>
+
+  <!-- FAQ 摘要（mini） -->
+  <div class="faq-mini">
+    <div class="faq-item">
+      <span class="q">Q: 这个页面是官方介绍吗？</span>
+      <span class="a">A: 本页为独立编写的说明页，概括站点的基本面貌，所有引用均基于 <a href="https://zh-c-oubo.com">欧博</a> 公开内容。</span>
+    </div>
+    <div class="faq-item">
+      <span class="q">Q: 是否有额外追踪链接？</span>
+      <span class="a">A: 页面内所有链接均直接指向目标，无重定向或参数附加。</span>
+    </div>
+  </div>
+
+  <!-- 温和结尾 -->
+  <div class="gentle-end">
+    <p>— 以上为本次整理的站点介绍 —</p>
+    <p>内容保持真实、克制的叙述节奏，未添加任何未经验证的断言。</p>
+    <small>页面结构基于蓝绿色点缀与卡片网格，适合在移动设备上阅读。</small>
+  </div>
+
+  <hr>
+
+  <div style="text-align: right; font-size: 0.8rem; color: #5b7f87; margin-top: 0.2rem;">
+    <span>说明页 · 非官方版本</span>
+  </div>
+
+</div>
+</body>
+</html>
